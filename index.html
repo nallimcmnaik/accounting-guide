@@ -10,34 +10,16 @@
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
   :root{
-    --bg:#f6f8fc;
-    --surface:#ffffff;
-    --surface2:#f1f4fa;
-    --border:#e4e9f2;
-    --border2:#d2dae8;
-    --text:#0f1729;
-    --text2:#5a6478;
-    --text3:#97a1b5;
-    --brand:#4f46e5;
-    --brand2:#6366f1;
-    --brand-bg:#eef0ff;
-    --teal:#0d9488;
-    --teal-bg:#e6fbf7;
-    --amber:#d97706;
-    --amber-bg:#fef5e7;
-    --pink:#db2777;
-    --pink-bg:#fdf0f7;
-    --green:#16a34a;
-    --green-bg:#e9f9ee;
-    --red:#dc2626;
-    --radius:14px;
-    --radius-sm:9px;
+    --bg:#f6f8fc;--surface:#ffffff;--surface2:#f1f4fa;--border:#e4e9f2;--border2:#d2dae8;
+    --text:#0f1729;--text2:#5a6478;--text3:#97a1b5;
+    --brand:#4f46e5;--brand2:#6366f1;--brand-bg:#eef0ff;
+    --teal:#0d9488;--teal-bg:#e6fbf7;--amber:#d97706;--amber-bg:#fef5e7;
+    --pink:#db2777;--pink-bg:#fdf0f7;--green:#16a34a;--green-bg:#e9f9ee;--red:#dc2626;
+    --radius:14px;--radius-sm:9px;
     --shadow:0 1px 3px rgba(15,23,41,0.06),0 1px 2px rgba(15,23,41,0.04);
     --shadow-lg:0 10px 30px rgba(15,23,41,0.10);
   }
   body{font-family:'Plus Jakarta Sans',-apple-system,sans-serif;background:var(--bg);color:var(--text);height:100vh;display:flex;overflow:hidden;font-size:14px;-webkit-font-smoothing:antialiased}
-
-  /* Sidebar */
   #sidebar{width:236px;background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;flex-shrink:0;overflow:hidden}
   #brand{padding:20px 18px 16px;display:flex;align-items:center;gap:11px}
   #brand .logo{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--brand2));display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;flex-shrink:0}
@@ -53,56 +35,49 @@
   #sync{padding:12px 18px;border-top:1px solid var(--border);font-size:11px;color:var(--text3);font-weight:600;display:flex;align-items:center;gap:6px}
   #sync .dot{width:7px;height:7px;border-radius:50%;background:var(--green)}
   #sync .dot.off{background:var(--red)}
-
-  /* Main */
   #main{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0}
   #topbar{background:var(--surface);border-bottom:1px solid var(--border);padding:16px 26px;display:flex;align-items:center;gap:14px;flex-shrink:0}
   #topbar .tt{flex:1;min-width:0}
+  .crumbs{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:var(--text3);flex-wrap:wrap}
+  .crumbs .cb{cursor:pointer;display:inline-flex;align-items:center;gap:6px;padding:3px 4px;border-radius:6px}
+  .crumbs .cb:hover{color:var(--brand)}
+  .crumbs .cb.current{color:var(--text);font-weight:800;cursor:default}
+  .crumbs .sep{color:var(--border2);font-size:14px}
   #topbar h2{font-size:19px;font-weight:800;letter-spacing:-0.02em;display:flex;align-items:center;gap:9px}
-  #topbar p{font-size:12.5px;color:var(--text3);font-weight:500;margin-top:1px}
-  #search{border:1px solid var(--border2);border-radius:10px;padding:9px 13px;font-size:13px;background:var(--surface2);color:var(--text);width:220px;outline:none;font-family:inherit;font-weight:500}
+  #topbar .sub{font-size:12.5px;color:var(--text3);font-weight:500;margin-top:1px}
+  #search{border:1px solid var(--border2);border-radius:10px;padding:9px 13px;font-size:13px;background:var(--surface2);color:var(--text);width:200px;outline:none;font-family:inherit;font-weight:500}
   #search:focus{border-color:var(--brand);background:#fff}
   .btn{padding:9px 15px;border-radius:10px;border:1px solid var(--border2);background:var(--surface);color:var(--text);font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;white-space:nowrap;font-weight:600;font-family:inherit;transition:all 0.12s}
   .btn:hover{background:var(--surface2);border-color:var(--text3)}
   .btn.primary{background:var(--brand);color:#fff;border-color:var(--brand)}
-  .btn.primary:hover{background:var(--brand2);border-color:var(--brand2)}
+  .btn.primary:hover{background:var(--brand2)}
   .btn:disabled{opacity:0.5;cursor:not-allowed}
   .btn i{font-size:17px}
-
   #content{flex:1;overflow-y:auto;padding:26px}
-
-  /* Heading groups */
-  .heading-block{margin-bottom:30px}
-  .heading-row{display:flex;align-items:center;gap:10px;margin-bottom:14px}
-  .heading-row h3{font-size:15px;font-weight:800;letter-spacing:-0.01em;display:flex;align-items:center;gap:8px}
-  .heading-row .hcount{font-size:11px;color:var(--text3);background:var(--surface2);padding:2px 9px;border-radius:20px;font-weight:700}
-  .heading-row .hadd{margin-left:auto;font-size:12px;color:var(--brand);background:none;border:none;cursor:pointer;font-weight:700;font-family:inherit;display:flex;align-items:center;gap:4px;padding:5px 8px;border-radius:7px}
-  .heading-row .hadd:hover{background:var(--brand-bg)}
-  .heading-del{font-size:15px;color:var(--text3);cursor:pointer;background:none;border:none;padding:2px}
-  .heading-del:hover{color:var(--red)}
-
-  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px}
-  .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:17px;cursor:pointer;box-shadow:var(--shadow);transition:all 0.14s;position:relative}
-  .card:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px);border-color:var(--border2)}
-  .card h4{font-size:14px;font-weight:700;line-height:1.4;margin-bottom:7px;padding-right:8px}
-  .card p{font-size:12.5px;color:var(--text2);line-height:1.6;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-  .card .meta{margin-top:11px;font-size:11px;color:var(--text3);font-weight:600}
-
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:15px}
+  .tile{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px;cursor:pointer;box-shadow:var(--shadow);transition:all 0.14s;position:relative;display:flex;flex-direction:column;gap:12px;min-height:108px}
+  .tile:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px);border-color:var(--border2)}
+  .tile .tile-ic{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:22px}
+  .ic-heading{background:var(--brand-bg);color:var(--brand)}
+  .ic-folder{background:var(--amber-bg);color:var(--amber)}
+  .ic-note{background:var(--teal-bg);color:var(--teal)}
+  .ic-pdf{background:var(--pink-bg);color:var(--pink)}
+  .tile h4{font-size:14.5px;font-weight:700;line-height:1.35}
+  .tile .tsub{font-size:12px;color:var(--text3);font-weight:600;margin-top:auto}
+  .tile .tdel{position:absolute;top:10px;right:10px;width:26px;height:26px;border-radius:7px;border:none;background:var(--surface2);color:var(--text3);cursor:pointer;font-size:14px;display:none;align-items:center;justify-content:center}
+  .tile:hover .tdel{display:flex}
+  .tile .tdel:hover{background:#fdeaea;color:var(--red)}
+  .card-note p{font-size:12.5px;color:var(--text2);line-height:1.6;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
   .empty{text-align:center;padding:54px 20px;color:var(--text2);grid-column:1/-1}
   .empty i{font-size:42px;color:var(--border2);margin-bottom:12px;display:block}
-  .empty p{font-size:13.5px;font-weight:500}
-  .empty-add{margin-top:14px;display:inline-flex}
-
-  /* note detail */
+  .empty p{font-size:13.5px;font-weight:500;margin-bottom:14px}
   #detail{display:none}
   #detail.open{display:block}
   .detail-actions{display:flex;gap:9px;margin-bottom:20px}
   .detail-h{font-size:24px;font-weight:800;letter-spacing:-0.025em;margin-bottom:10px;line-height:1.25}
   .detail-meta{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--text2);margin-bottom:22px;font-weight:600}
-  .pill{font-size:11px;padding:4px 11px;border-radius:20px;font-weight:700;background:var(--brand-bg);color:var(--brand)}
   .detail-body{font-size:14.5px;line-height:1.85;white-space:pre-wrap;max-width:760px}
-
-  /* Calendar */
+  .pdf-frame{width:100%;height:78vh;border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
   #cal-wrap{display:grid;grid-template-columns:1fr 320px;gap:22px}
   @media(max-width:900px){#cal-wrap{grid-template-columns:1fr}}
   .cal-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px}
@@ -118,7 +93,6 @@
   .cal-day.other{color:var(--text3);opacity:0.4}
   .cal-day.today{background:var(--brand-bg);color:var(--brand);border-color:var(--brand2)}
   .cal-day .ev-dot{width:5px;height:5px;border-radius:50%;background:var(--pink);margin-top:3px}
-  .cal-day.has-ev{font-weight:800}
   .ev-list-item{padding:11px 13px;border-radius:10px;background:var(--surface2);margin-bottom:9px;display:flex;align-items:flex-start;gap:10px}
   .ev-list-item .ev-date{font-size:11px;font-weight:800;color:var(--pink);background:var(--pink-bg);padding:5px 8px;border-radius:7px;text-align:center;min-width:46px;flex-shrink:0;line-height:1.2}
   .ev-list-item .ev-info{flex:1;min-width:0}
@@ -126,8 +100,6 @@
   .ev-list-item .ev-info p{font-size:11.5px;color:var(--text2);margin-top:2px}
   .ev-list-item .ev-del{color:var(--text3);cursor:pointer;font-size:15px;background:none;border:none}
   .ev-list-item .ev-del:hover{color:var(--red)}
-
-  /* Jobs */
   .jobs-board{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
   @media(max-width:1000px){.jobs-board{grid-template-columns:repeat(2,1fr)}}
   @media(max-width:600px){.jobs-board{grid-template-columns:1fr}}
@@ -142,12 +114,10 @@
   .job-card .jd{font-size:11px;margin-top:7px;font-weight:700;display:inline-flex;align-items:center;gap:4px;color:var(--text3)}
   .job-card .jd.soon{color:var(--amber)}
   .job-card .jd.over{color:var(--red)}
-
-  /* AI panel */
   #ai{width:368px;flex-shrink:0;border-left:1px solid var(--border);background:var(--surface);display:flex;flex-direction:column;overflow:hidden}
   #ai-head{padding:16px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
   #ai-head .ai-ic{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--teal),#0891b2);color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px}
-  #ai-head h3{font-size:14px;font-weight:800;flex:1}
+  #ai-head h3{font-size:14px;font-weight:800}
   #ai-head p{font-size:11px;color:var(--text3);font-weight:600}
   #ai-msgs{flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:12px}
   .m{max-width:88%;font-size:13.5px;line-height:1.65;font-weight:500}
@@ -158,11 +128,8 @@
   #ai-in{flex:1;border:1px solid var(--border2);border-radius:11px;padding:11px 13px;font-size:13.5px;background:var(--surface2);color:var(--text);outline:none;resize:none;font-family:inherit;font-weight:500;min-height:42px;max-height:120px}
   #ai-in:focus{border-color:var(--teal);background:#fff}
   #ai-send{width:42px;flex-shrink:0;background:var(--teal);color:#fff;border:none;border-radius:11px;cursor:pointer;font-size:17px}
-  #ai-send:hover{opacity:0.9}
-
-  /* Modal */
-  #ov{display:none;position:fixed;inset:0;background:rgba(15,23,41,0.5);z-index:100;align-items:center;justify-content:center;padding:20px}
-  #ov.open{display:flex}
+  .ov{display:none;position:fixed;inset:0;background:rgba(15,23,41,0.5);z-index:100;align-items:center;justify-content:center;padding:20px}
+  .ov.open{display:flex}
   .modal{background:var(--surface);border-radius:18px;width:560px;max-width:100%;max-height:88vh;display:flex;flex-direction:column;box-shadow:var(--shadow-lg)}
   .modal-h{padding:20px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:11px}
   .modal-h h3{font-size:17px;font-weight:800;flex:1}
@@ -173,22 +140,22 @@
   .fg input,.fg textarea,.fg select{width:100%;border:1px solid var(--border2);border-radius:10px;padding:11px 13px;font-size:14px;background:var(--surface2);color:var(--text);outline:none;font-family:inherit;font-weight:500}
   .fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--brand);background:#fff}
   .fg textarea{min-height:170px;resize:vertical;line-height:1.7}
-  .fg-row{display:flex;gap:12px}
-  .fg-row .fg{flex:1}
+  .fg-row{display:flex;gap:12px}.fg-row .fg{flex:1}
   .modal-f{padding:16px 24px;border-top:1px solid var(--border);display:flex;gap:10px;justify-content:flex-end}
   .gen-btn{padding:7px 13px;border-radius:9px;border:1px solid var(--teal);background:var(--teal-bg);color:var(--teal);font-size:12px;cursor:pointer;font-weight:700;display:inline-flex;align-items:center;gap:5px;font-family:inherit}
-  .gen-btn:hover{opacity:0.85}
   .gen-btn:disabled{opacity:0.5}
   .gen-stat{font-size:12px;color:var(--text3);font-style:italic;padding:5px 0;font-weight:600}
+  .seg{display:flex;gap:8px;margin-bottom:18px}
+  .seg button{flex:1;padding:10px;border-radius:10px;border:1px solid var(--border2);background:var(--surface2);font-weight:700;font-size:13px;cursor:pointer;font-family:inherit;color:var(--text2);display:flex;align-items:center;justify-content:center;gap:7px}
+  .seg button.on{background:var(--brand-bg);border-color:var(--brand2);color:var(--brand)}
+  .drop{border:2px dashed var(--border2);border-radius:12px;padding:26px;text-align:center;cursor:pointer;color:var(--text3);font-weight:600;font-size:13px}
+  .drop:hover{border-color:var(--brand);color:var(--brand);background:var(--brand-bg)}
+  .drop.has{border-style:solid;border-color:var(--green);color:var(--green);background:var(--green-bg)}
 </style>
 </head>
 <body>
-
 <div id="sidebar">
-  <div id="brand">
-    <div class="logo"><i class="ti ti-abacus"></i></div>
-    <div><h1>Accountant HQ</h1><p>Your knowledge base</p></div>
-  </div>
+  <div id="brand"><div class="logo"><i class="ti ti-abacus"></i></div><div><h1>Accountant HQ</h1><p>Your knowledge base</p></div></div>
   <div id="nav">
     <div class="nav-item active" data-v="files" onclick="go('files')"><i class="ti ti-folders"></i>Files<span class="count" id="c-files">0</span></div>
     <div class="nav-item" data-v="software" onclick="go('software')"><i class="ti ti-device-desktop"></i>Software<span class="count" id="c-software">0</span></div>
@@ -197,402 +164,175 @@
     <div class="nav-item" data-v="calendar" onclick="go('calendar')"><i class="ti ti-calendar-event"></i>Calendar<span class="count" id="c-calendar">0</span></div>
     <div class="nav-item" data-v="jobs" onclick="go('jobs')"><i class="ti ti-checklist"></i>Jobs<span class="count" id="c-jobs">0</span></div>
   </div>
-  <div id="sync"><span class="dot" id="sync-dot"></span><span id="sync-txt">Connecting…</span></div>
+  <div id="sync"><span class="dot" id="sync-dot"></span><span id="sync-txt">Connecting...</span></div>
 </div>
-
 <div id="main">
   <div id="topbar">
     <div class="tt">
+      <div class="crumbs" id="crumbs"></div>
       <h2 id="tb-title"><i class="ti ti-folders"></i>Files</h2>
-      <p id="tb-sub">What you need in each type of file</p>
+      <div class="sub" id="tb-sub">What you need in each type of file</div>
     </div>
-    <input id="search" placeholder="Search…" oninput="render()">
-    <button class="btn primary" id="add-btn" onclick="openAdd()"><i class="ti ti-plus"></i><span id="add-label">New entry</span></button>
+    <input id="search" placeholder="Search..." oninput="render()">
+    <button class="btn primary" id="add-btn"><i class="ti ti-plus"></i><span id="add-label">New</span></button>
   </div>
-  <div id="content">
-    <div id="list"></div>
-    <div id="detail">
-      <div class="detail-actions">
-        <button class="btn" onclick="closeDetail()"><i class="ti ti-arrow-left"></i>Back</button>
-        <button class="btn" onclick="editCur()"><i class="ti ti-edit"></i>Edit</button>
-        <button class="btn" style="color:var(--red);border-color:#f5c2c2" onclick="delCur()"><i class="ti ti-trash"></i>Delete</button>
-      </div>
-      <div class="detail-h" id="d-title"></div>
-      <div class="detail-meta"><span class="pill" id="d-pill"></span><span id="d-date"></span></div>
-      <div class="detail-body" id="d-body"></div>
-    </div>
-  </div>
+  <div id="content"><div id="list"></div><div id="detail"></div></div>
 </div>
-
 <div id="ai">
-  <div id="ai-head">
-    <div class="ai-ic"><i class="ti ti-sparkles"></i></div>
-    <div style="flex:1"><h3>AI Assistant</h3><p>Knows your notes</p></div>
-  </div>
-  <div id="ai-msgs">
-    <div class="m ai">Hi Kian — ask me anything accounting-related. I'll pull in your saved notes when they're relevant.</div>
-  </div>
-  <div id="ai-in-wrap">
-    <textarea id="ai-in" placeholder="Ask a question…" rows="1" onkeydown="aiKey(event)"></textarea>
-    <button id="ai-send" onclick="aiSend()"><i class="ti ti-send"></i></button>
+  <div id="ai-head"><div class="ai-ic"><i class="ti ti-sparkles"></i></div><div style="flex:1"><h3>AI Assistant</h3><p>Knows your notes</p></div></div>
+  <div id="ai-msgs"><div class="m ai">Hi Kian - ask me anything accounting-related. I'll pull in your saved notes when relevant.</div></div>
+  <div id="ai-in-wrap"><textarea id="ai-in" placeholder="Ask a question..." rows="1" onkeydown="aiKey(event)"></textarea><button id="ai-send" onclick="aiSend()"><i class="ti ti-send"></i></button></div>
+</div>
+<div class="ov" id="ov-name">
+  <div class="modal" style="width:430px">
+    <div class="modal-h"><h3 id="n-title">New</h3><button class="x" onclick="closeOv('ov-name')"><i class="ti ti-x"></i></button></div>
+    <div class="modal-b"><div class="fg"><label id="n-label">Name</label><input id="n-input" placeholder="Name"></div></div>
+    <div class="modal-f"><button class="btn" onclick="closeOv('ov-name')">Cancel</button><button class="btn primary" id="n-save" onclick="saveName()">Add</button></div>
   </div>
 </div>
-
-<!-- Entry modal -->
-<div id="ov">
-  <div class="modal" id="entry-modal">
-    <div class="modal-h"><h3 id="m-title">New entry</h3><button class="x" onclick="closeOv()"><i class="ti ti-x"></i></button></div>
+<div class="ov" id="ov-item">
+  <div class="modal">
+    <div class="modal-h"><h3 id="i-title">New item</h3><button class="x" onclick="closeOv('ov-item')"><i class="ti ti-x"></i></button></div>
     <div class="modal-b">
-      <div class="fg">
-        <label>Heading</label>
-        <select id="f-heading"></select>
+      <div class="seg" id="i-seg">
+        <button id="seg-note" class="on" onclick="setItemType('note')"><i class="ti ti-note"></i>Note</button>
+        <button id="seg-pdf" onclick="setItemType('pdf')"><i class="ti ti-file-type-pdf"></i>PDF</button>
       </div>
-      <div class="fg"><label>Title</label><input id="f-title" placeholder="e.g. Documents needed for a tax file"></div>
-      <div class="fg">
-        <label>Content</label>
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
-          <span style="font-size:11px;color:var(--text3);font-weight:600">Write it, or let AI draft it</span>
-          <button class="gen-btn" id="gen-btn" onclick="genEntry()"><i class="ti ti-sparkles"></i>AI write</button>
+      <div class="fg"><label>Title</label><input id="i-name" placeholder="Give it a name"></div>
+      <div id="note-fields">
+        <div class="fg">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px"><label style="margin:0">Content</label><button class="gen-btn" id="gen-btn" onclick="genItem()"><i class="ti ti-sparkles"></i>AI write</button></div>
+          <div id="gen-stat"></div>
+          <textarea id="i-body" placeholder="Steps, checklists, things to remember..."></textarea>
         </div>
-        <div id="gen-stat"></div>
-        <textarea id="f-body" placeholder="Steps, checklists, things to remember…"></textarea>
+      </div>
+      <div id="pdf-fields" style="display:none">
+        <div class="fg"><label>PDF file</label><div class="drop" id="drop" onclick="document.getElementById('pdf-input').click()"><i class="ti ti-cloud-upload" style="font-size:26px;display:block;margin-bottom:6px"></i><span id="drop-txt">Click to choose a PDF from your laptop</span></div><input type="file" id="pdf-input" accept="application/pdf" style="display:none" onchange="pdfChosen(event)"></div>
       </div>
     </div>
-    <div class="modal-f"><button class="btn" onclick="closeOv()">Cancel</button><button class="btn primary" id="save-btn" onclick="saveEntry()">Save</button></div>
+    <div class="modal-f"><button class="btn" onclick="closeOv('ov-item')">Cancel</button><button class="btn primary" id="i-save" onclick="saveItem()">Save</button></div>
   </div>
 </div>
-
-<!-- Heading modal -->
-<div id="ov2" class="" style="display:none;position:fixed;inset:0;background:rgba(15,23,41,0.5);z-index:101;align-items:center;justify-content:center;padding:20px">
-  <div class="modal" style="width:420px">
-    <div class="modal-h"><h3 id="h-mtitle">New heading</h3><button class="x" onclick="closeHeadingModal()"><i class="ti ti-x"></i></button></div>
-    <div class="modal-b"><div class="fg"><label id="h-label">Heading name</label><input id="h-name" placeholder="e.g. VAT, Payroll, Accounts file"></div></div>
-    <div class="modal-f"><button class="btn" onclick="closeHeadingModal()">Cancel</button><button class="btn primary" onclick="saveHeading()">Add</button></div>
-  </div>
-</div>
-
-<!-- Event modal -->
-<div id="ov3" style="display:none;position:fixed;inset:0;background:rgba(15,23,41,0.5);z-index:101;align-items:center;justify-content:center;padding:20px">
+<div class="ov" id="ov-event">
   <div class="modal" style="width:440px">
-    <div class="modal-h"><h3>New key date</h3><button class="x" onclick="closeEventModal()"><i class="ti ti-x"></i></button></div>
-    <div class="modal-b">
-      <div class="fg"><label>What</label><input id="e-title" placeholder="e.g. Corporation tax payment due"></div>
-      <div class="fg"><label>Date</label><input id="e-date" type="date"></div>
-      <div class="fg"><label>Notes (optional)</label><input id="e-notes" placeholder="Client, reference, amount…"></div>
-    </div>
-    <div class="modal-f"><button class="btn" onclick="closeEventModal()">Cancel</button><button class="btn primary" onclick="saveEvent()">Add date</button></div>
+    <div class="modal-h"><h3>New key date</h3><button class="x" onclick="closeOv('ov-event')"><i class="ti ti-x"></i></button></div>
+    <div class="modal-b"><div class="fg"><label>What</label><input id="e-title" placeholder="e.g. Corporation tax payment due"></div><div class="fg"><label>Date</label><input id="e-date" type="date"></div><div class="fg"><label>Notes (optional)</label><input id="e-notes" placeholder="Client, reference, amount..."></div></div>
+    <div class="modal-f"><button class="btn" onclick="closeOv('ov-event')">Cancel</button><button class="btn primary" onclick="saveEvent()">Add date</button></div>
   </div>
 </div>
-
-<!-- Job modal -->
-<div id="ov4" style="display:none;position:fixed;inset:0;background:rgba(15,23,41,0.5);z-index:101;align-items:center;justify-content:center;padding:20px">
+<div class="ov" id="ov-job">
   <div class="modal" style="width:480px">
-    <div class="modal-h"><h3 id="j-mtitle">New job</h3><button class="x" onclick="closeJobModal()"><i class="ti ti-x"></i></button></div>
-    <div class="modal-b">
-      <div class="fg"><label>Client</label><input id="j-client" placeholder="Client name"></div>
-      <div class="fg-row">
-        <div class="fg"><label>Job type</label><input id="j-type" placeholder="e.g. Year-end accounts"></div>
-        <div class="fg"><label>Status</label><select id="j-status"><option>To do</option><option>In progress</option><option>Review</option><option>Done</option></select></div>
-      </div>
-      <div class="fg"><label>Due date</label><input id="j-due" type="date"></div>
-      <div class="fg"><label>Notes</label><textarea id="j-notes" style="min-height:90px" placeholder="Anything to remember…"></textarea></div>
-    </div>
-    <div class="modal-f"><button class="btn" id="j-del" style="margin-right:auto;color:var(--red);border-color:#f5c2c2;display:none" onclick="delJob()"><i class="ti ti-trash"></i>Delete</button><button class="btn" onclick="closeJobModal()">Cancel</button><button class="btn primary" onclick="saveJob()">Save job</button></div>
+    <div class="modal-h"><h3 id="j-mtitle">New job</h3><button class="x" onclick="closeOv('ov-job')"><i class="ti ti-x"></i></button></div>
+    <div class="modal-b"><div class="fg"><label>Client</label><input id="j-client" placeholder="Client name"></div><div class="fg-row"><div class="fg"><label>Job type</label><input id="j-type" placeholder="e.g. Year-end accounts"></div><div class="fg"><label>Status</label><select id="j-status"><option>To do</option><option>In progress</option><option>Review</option><option>Done</option></select></div></div><div class="fg"><label>Due date</label><input id="j-due" type="date"></div><div class="fg"><label>Notes</label><textarea id="j-notes" style="min-height:90px" placeholder="Anything to remember..."></textarea></div></div>
+    <div class="modal-f"><button class="btn" id="j-del" style="margin-right:auto;color:var(--red);border-color:#f5c2c2;display:none" onclick="delJob()"><i class="ti ti-trash"></i>Delete</button><button class="btn" onclick="closeOv('ov-job')">Cancel</button><button class="btn primary" onclick="saveJob()">Save job</button></div>
   </div>
 </div>
-
 <script>
 const SB_URL='https://fjkmtmfhkuybwyiosmow.supabase.co';
 const SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZqa210bWZoa3V5Ynd5aW9zbW93Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEyNjgwOTMsImV4cCI6MjA5Njg0NDA5M30.rtqNZ4-PSIJcjq6YzDKsrlsJOwgZHKOj-8J-TIIyenM';
 const H={'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json','Prefer':'return=representation'};
-
-const DEFAULT_HEADINGS={
-  files:['Accounts file','Tax file','VAT file','Payroll file'],
-  software:['IRIS','Xero','Sage','QuickBooks'],
-  notes:['General'],
-  learning:['Bookkeeping basics','Tax','Accounts prep']
-};
-const SECTION_META={
-  files:{icon:'folders',title:'Files',sub:'What you need in each type of file'},
-  software:{icon:'device-desktop',title:'Software',sub:'What to know about each software'},
-  notes:{icon:'note',title:'Notes',sub:'Anything you want to remember'},
-  learning:{icon:'bulb',title:'Learning',sub:'Build your knowledge — add your own topics'},
-  calendar:{icon:'calendar-event',title:'Calendar',sub:'Key dates and deadlines'},
-  jobs:{icon:'checklist',title:'Jobs',sub:'Track your work and clients'}
-};
-const JOB_COLS=[
-  {name:'To do',color:'#97a1b5'},
-  {name:'In progress',color:'#4f46e5'},
-  {name:'Review',color:'#d97706'},
-  {name:'Done',color:'#16a34a'}
-];
-
+const DEFAULT_HEADINGS={files:['Accounts file','Tax file','VAT file','Payroll file'],software:['IRIS','Xero','Sage','QuickBooks'],notes:['General'],learning:['Bookkeeping basics','Tax','Accounts prep']};
+const SECTION_META={files:{icon:'folders',title:'Files',sub:'What you need in each type of file',hLabel:'file'},software:{icon:'device-desktop',title:'Software',sub:'What to know about each software',hLabel:'software'},notes:{icon:'note',title:'Notes',sub:'Anything you want to remember',hLabel:'heading'},learning:{icon:'bulb',title:'Learning',sub:'Build your knowledge - add your own topics',hLabel:'topic'},calendar:{icon:'calendar-event',title:'Calendar',sub:'Key dates and deadlines'},jobs:{icon:'checklist',title:'Jobs',sub:'Track your work and clients'}};
+const JOB_COLS=[{name:'To do',color:'#97a1b5'},{name:'In progress',color:'#4f46e5'},{name:'Review',color:'#d97706'},{name:'Done',color:'#16a34a'}];
 let view='files';
-let entries=[],headings=[],events=[],jobs=[];
-let editId=null,viewId=null;
-let headingTargetSection=null;
+let folders=[],items=[],headings=[],events=[],jobs=[];
+let level='section', curHeading=null, curFolder=null, curItem=null;
+let nameMode=null;
+let editItemId=null, itemType='note', pendingPdf=null;
 let calMonth=new Date().getMonth(),calYear=new Date().getFullYear();
 let editJobId=null;
-
-async function sb(path,opts={}){
-  const r=await fetch(SB_URL+'/rest/v1/'+path,{headers:H,...opts});
-  if(!r.ok)throw new Error(await r.text());
-  const t=await r.text();return t?JSON.parse(t):null;
-}
-
-async function loadAll(){
-  try{
-    [entries,headings,events,jobs]=await Promise.all([
-      sb('entries?select=*&order=updated_at.desc'),
-      sb('headings?select=*&order=created_at.asc'),
-      sb('events?select=*&order=date.asc'),
-      sb('jobs?select=*&order=created_at.desc')
-    ]);
-    document.getElementById('sync-dot').classList.remove('off');
-    document.getElementById('sync-txt').textContent='Synced';
-  }catch(e){
-    document.getElementById('sync-dot').classList.add('off');
-    document.getElementById('sync-txt').textContent='Offline';
-    entries=entries||[];headings=headings||[];events=events||[];jobs=jobs||[];
-  }
-  updateCounts();render();
-}
-
-function headingsFor(section){
-  const custom=headings.filter(h=>h.section===section).map(h=>h.name);
-  const defaults=DEFAULT_HEADINGS[section]||[];
-  const all=[...defaults];
-  custom.forEach(c=>{if(!all.includes(c))all.push(c)});
-  return all;
-}
-
-function updateCounts(){
-  ['files','software','notes','learning'].forEach(s=>{
-    document.getElementById('c-'+s).textContent=entries.filter(e=>e.section===s).length;
-  });
-  document.getElementById('c-calendar').textContent=events.length;
-  document.getElementById('c-jobs').textContent=jobs.filter(j=>j.status!=='Done').length;
-}
-
-function go(v){
-  view=v;closeDetail();
-  document.querySelectorAll('.nav-item').forEach(el=>el.classList.toggle('active',el.dataset.v===v));
-  const m=SECTION_META[v];
+async function sb(path,opts={}){const r=await fetch(SB_URL+'/rest/v1/'+path,{headers:H,...opts});if(!r.ok)throw new Error(await r.text());const t=await r.text();return t?JSON.parse(t):null;}
+async function uploadPdf(file){const path=Date.now()+'_'+file.name.replace(/[^a-zA-Z0-9._-]/g,'_');const r=await fetch(SB_URL+'/storage/v1/object/documents/'+path,{method:'POST',headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/pdf'},body:file});if(!r.ok)throw new Error(await r.text());return{path,url:SB_URL+'/storage/v1/object/public/documents/'+path};}
+async function deletePdf(path){if(!path)return;try{await fetch(SB_URL+'/storage/v1/object/documents/'+path,{method:'DELETE',headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY}});}catch(e){}}
+async function loadAll(){try{[folders,items,headings,events,jobs]=await Promise.all([sb('folders?select=*&order=created_at.asc'),sb('items?select=*&order=created_at.desc'),sb('headings?select=*&order=created_at.asc'),sb('events?select=*&order=date.asc'),sb('jobs?select=*&order=created_at.desc')]);document.getElementById('sync-dot').classList.remove('off');document.getElementById('sync-txt').textContent='Synced';}catch(e){document.getElementById('sync-dot').classList.add('off');document.getElementById('sync-txt').textContent='Offline';folders=folders||[];items=items||[];headings=headings||[];events=events||[];jobs=jobs||[];}updateCounts();render();}
+function headingsFor(section){const custom=headings.filter(h=>h.section===section).map(h=>h.name);const all=[...(DEFAULT_HEADINGS[section]||[])];custom.forEach(c=>{if(!all.includes(c))all.push(c)});return all;}
+function foldersIn(section,heading){return folders.filter(f=>f.section===section&&(heading===undefined||f.heading===heading));}
+function itemsIn(folderId){return items.filter(i=>i.folder_id===folderId);}
+function updateCounts(){document.getElementById('c-files').textContent=headingsFor('files').length;document.getElementById('c-software').textContent=headingsFor('software').length;document.getElementById('c-notes').textContent=headingsFor('notes').length;document.getElementById('c-learning').textContent=headingsFor('learning').length;document.getElementById('c-calendar').textContent=events.length;document.getElementById('c-jobs').textContent=jobs.filter(j=>j.status!=='Done').length;}
+function go(v){view=v;level='section';curHeading=null;curFolder=null;curItem=null;document.querySelectorAll('.nav-item').forEach(el=>el.classList.toggle('active',el.dataset.v===v));render();}
+function setTopbar(){
+  const m=SECTION_META[view];
   document.getElementById('tb-title').innerHTML='<i class="ti ti-'+m.icon+'"></i>'+m.title;
   document.getElementById('tb-sub').textContent=m.sub;
-  const sec=['calendar','jobs'].includes(v);
-  document.getElementById('search').style.display=sec?'none':'block';
-  const addLbl=document.getElementById('add-label');
-  const addBtn=document.getElementById('add-btn');
-  if(v==='calendar'){addLbl.textContent='Add date';addBtn.onclick=openEventModal;}
-  else if(v==='jobs'){addLbl.textContent='New job';addBtn.onclick=()=>openJobModal();}
-  else{addLbl.textContent='New entry';addBtn.onclick=openAdd;}
-  render();
+  const sec=['calendar','jobs'].includes(view);
+  document.getElementById('search').style.display=(sec||level==='item')?'none':'block';
+  const cr=document.getElementById('crumbs');
+  if(sec||level==='section'){cr.innerHTML='';document.getElementById('tb-title').style.display='flex';document.getElementById('tb-sub').style.display='block';}
+  else{
+    document.getElementById('tb-title').style.display='none';document.getElementById('tb-sub').style.display='none';
+    let h='<span class="cb" onclick="go(\''+view+'\')"><i class="ti ti-'+m.icon+'"></i>'+m.title+'</span>';
+    if(curHeading){h+='<span class="sep">/</span>';if(level==='heading')h+='<span class="cb current">'+esc(curHeading)+'</span>';else h+='<span class="cb" onclick="openHeading(\''+escAttr(curHeading)+'\')">'+esc(curHeading)+'</span>';}
+    if(curFolder){h+='<span class="sep">/</span>';if(level==='folder')h+='<span class="cb current">'+esc(curFolder.name)+'</span>';else h+='<span class="cb" onclick="openFolder(\''+curFolder.id+'\')">'+esc(curFolder.name)+'</span>';}
+    if(curItem&&level==='item'){h+='<span class="sep">/</span><span class="cb current">'+esc(curItem.title)+'</span>';}
+    cr.innerHTML=h;
+  }
+  const lbl=document.getElementById('add-label');const btn=document.getElementById('add-btn');btn.style.display='inline-flex';
+  if(view==='calendar'){lbl.textContent='Add date';btn.onclick=()=>openOv('ov-event');}
+  else if(view==='jobs'){lbl.textContent='New job';btn.onclick=()=>openJobModal();}
+  else if(level==='section'){lbl.textContent='New '+m.hLabel;btn.onclick=()=>openName('heading');}
+  else if(level==='heading'){lbl.textContent='New folder';btn.onclick=()=>openName('folder');}
+  else if(level==='folder'){lbl.textContent='Add item';btn.onclick=()=>openItem();}
+  else btn.style.display='none';
 }
-
 function render(){
-  const list=document.getElementById('list');
+  setTopbar();
+  const list=document.getElementById('list');const detail=document.getElementById('detail');
+  if(level==='item'){list.style.display='none';detail.classList.add('open');renderItem();return;}
+  list.style.display='block';detail.classList.remove('open');
   if(view==='calendar'){renderCalendar();return;}
   if(view==='jobs'){renderJobs();return;}
-  const q=document.getElementById('search').value.toLowerCase();
-  const secEntries=entries.filter(e=>e.section===view);
-  const hs=headingsFor(view);
-  let html='';
-  hs.forEach(h=>{
-    let items=secEntries.filter(e=>e.heading===h);
-    if(q)items=items.filter(e=>e.title.toLowerCase().includes(q)||e.body.toLowerCase().includes(q));
-    if(q&&!items.length)return;
-    const isCustom=headings.some(x=>x.section===view&&x.name===h);
-    html+='<div class="heading-block"><div class="heading-row"><h3><i class="ti ti-folder" style="color:var(--brand);font-size:18px"></i>'+esc(h)+'<span class="hcount">'+items.length+'</span></h3>';
-    html+='<button class="hadd" onclick="openAdd(\''+escAttr(h)+'\')"><i class="ti ti-plus"></i>Add</button>';
-    if(isCustom)html+='<button class="heading-del" title="Remove heading" onclick="delHeading(\''+escAttr(h)+'\')"><i class="ti ti-x"></i></button>';
-    html+='</div>';
-    if(!items.length){
-      html+='<div style="font-size:12.5px;color:var(--text3);font-weight:500;padding:4px 2px 8px">No entries yet.</div>';
-    }else{
-      html+='<div class="cards">';
-      items.forEach(e=>{
-        html+='<div class="card" onclick="openDetail(\''+e.id+'\')"><h4>'+esc(e.title)+'</h4><p>'+esc(e.body)+'</p><div class="meta">'+timeAgo(e.updated_at)+'</div></div>';
-      });
-      html+='</div>';
-    }
-    html+='</div>';
-  });
-  html+='<button class="btn" style="margin-top:4px" onclick="openHeadingModal(\''+view+'\')"><i class="ti ti-folder-plus"></i>New '+(view==='learning'?'topic':view==='software'?'software':'heading')+'</button>';
-  list.innerHTML=html;
-}
-
-/* Detail */
-function openDetail(id){
-  const e=entries.find(x=>x.id===id);if(!e)return;viewId=id;
-  document.getElementById('d-title').textContent=e.title;
-  document.getElementById('d-body').textContent=e.body;
-  document.getElementById('d-pill').textContent=e.heading;
-  document.getElementById('d-date').textContent='Updated '+new Date(e.updated_at).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
-  document.getElementById('list').style.display='none';
-  document.getElementById('detail').classList.add('open');
-}
-function closeDetail(){viewId=null;document.getElementById('list').style.display='block';document.getElementById('detail').classList.remove('open');}
-function editCur(){const e=entries.find(x=>x.id===viewId);if(e)openAdd(e.heading,e);}
-async function delCur(){if(!viewId||!confirm('Delete this entry?'))return;try{await sb('entries?id=eq.'+viewId,{method:'DELETE'});entries=entries.filter(e=>e.id!==viewId);updateCounts();closeDetail();render();}catch(e){alert('Failed to delete.')}}
-
-/* Entry modal */
-function openAdd(heading,entry){
-  editId=entry?entry.id:null;
-  document.getElementById('m-title').textContent=entry?'Edit entry':'New entry';
-  const sel=document.getElementById('f-heading');
-  sel.innerHTML=headingsFor(view).map(h=>'<option>'+esc(h)+'</option>').join('');
-  if(entry)sel.value=entry.heading;else if(heading)sel.value=heading;
-  document.getElementById('f-title').value=entry?entry.title:'';
-  document.getElementById('f-body').value=entry?entry.body:'';
-  document.getElementById('gen-stat').textContent='';
-  document.getElementById('ov').classList.add('open');
-  setTimeout(()=>document.getElementById('f-title').focus(),50);
-}
-function closeOv(){document.getElementById('ov').classList.remove('open');editId=null;}
-async function saveEntry(){
-  const heading=document.getElementById('f-heading').value;
-  const title=document.getElementById('f-title').value.trim();
-  const body=document.getElementById('f-body').value.trim();
-  if(!title||!body){alert('Add a title and content.');return;}
-  const b=document.getElementById('save-btn');b.disabled=true;b.textContent='Saving…';
-  try{
-    if(editId){
-      const u=await sb('entries?id=eq.'+editId,{method:'PATCH',body:JSON.stringify({heading,title,body,updated_at:new Date().toISOString()})});
-      const i=entries.findIndex(e=>e.id===editId);if(i>-1&&u&&u[0])entries[i]=u[0];
-    }else{
-      const c=await sb('entries',{method:'POST',body:JSON.stringify({section:view,heading,title,body})});
-      if(c&&c[0])entries.unshift(c[0]);
-    }
-    updateCounts();closeOv();render();
-    if(editId&&viewId)openDetail(viewId);
-  }catch(e){alert('Failed to save.')}
-  b.disabled=false;b.textContent='Save';
-}
-
-async function genEntry(){
-  const title=document.getElementById('f-title').value.trim();
-  const heading=document.getElementById('f-heading').value;
-  if(!title){alert('Enter a title first.');return;}
-  const btn=document.getElementById('gen-btn');btn.disabled=true;
-  document.getElementById('gen-stat').innerHTML='<div class="gen-stat">Writing…</div>';
-  try{
-    const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1000,messages:[{role:'user',content:`You are an experienced UK accountant writing an internal knowledge base note. Section: ${view}. Heading: ${heading}. Topic: ${title}. Write clear, practical, step-by-step content with key reminders and common mistakes. Concise, no preamble, no title — just the note body.`}]})});
-    const d=await r.json();
-    document.getElementById('f-body').value=d.content?.find(b=>b.type==='text')?.text||'';
-    document.getElementById('gen-stat').innerHTML='';
-  }catch(e){document.getElementById('gen-stat').innerHTML='<div class="gen-stat" style="color:var(--red)">Failed. Try again.</div>';}
-  btn.disabled=false;
-}
-
-/* Headings */
-function openHeadingModal(section){headingTargetSection=section;const lbls={learning:'Topic name',software:'Software name'};document.getElementById('h-mtitle').textContent='New '+(section==='learning'?'topic':section==='software'?'software':'heading');document.getElementById('h-label').textContent=lbls[section]||'Heading name';document.getElementById('h-name').value='';document.getElementById('ov2').style.display='flex';setTimeout(()=>document.getElementById('h-name').focus(),50);}
-function closeHeadingModal(){document.getElementById('ov2').style.display='none';}
-async function saveHeading(){const name=document.getElementById('h-name').value.trim();if(!name)return;try{const c=await sb('headings',{method:'POST',body:JSON.stringify({section:headingTargetSection,name})});if(c&&c[0])headings.push(c[0]);closeHeadingModal();render();}catch(e){alert('Failed to add.')}}
-async function delHeading(name){if(!confirm('Remove this heading? Entries inside it won\'t be deleted but will be hidden until you re-add the heading.'))return;const h=headings.find(x=>x.section===view&&x.name===name);if(!h)return;try{await sb('headings?id=eq.'+h.id,{method:'DELETE'});headings=headings.filter(x=>x.id!==h.id);render();}catch(e){alert('Failed.')}}
-
-/* Calendar */
-function renderCalendar(){
-  const list=document.getElementById('list');
-  const first=new Date(calYear,calMonth,1);
-  const startDow=(first.getDay()+6)%7;
-  const daysInMonth=new Date(calYear,calMonth+1,0).getDate();
-  const monthName=first.toLocaleDateString('en-GB',{month:'long',year:'numeric'});
-  const todayStr=new Date().toISOString().slice(0,10);
-  let cells='';
-  const dows=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
-  dows.forEach(d=>cells+='<div class="cal-dow">'+d+'</div>');
-  for(let i=0;i<startDow;i++)cells+='<div class="cal-day other"></div>';
-  for(let d=1;d<=daysInMonth;d++){
-    const ds=calYear+'-'+String(calMonth+1).padStart(2,'0')+'-'+String(d).padStart(2,'0');
-    const dayEvents=events.filter(e=>e.date===ds);
-    let cls='cal-day';if(ds===todayStr)cls+=' today';if(dayEvents.length)cls+=' has-ev';
-    cells+='<div class="'+cls+'" title="'+dayEvents.map(e=>esc(e.title)).join(', ')+'">'+d+(dayEvents.length?'<span class="ev-dot"></span>':'')+'</div>';
+  const q=(document.getElementById('search').value||'').toLowerCase();
+  if(level==='section'){
+    const hs=headingsFor(view);
+    let cards=hs.map(h=>{if(q&&!h.toLowerCase().includes(q))return'';const fc=foldersIn(view,h).length;const isCustom=headings.some(x=>x.section===view&&x.name===h);return tile('heading','folder',h,fc+' folder'+(fc!==1?'s':''),'openHeading(\''+escAttr(h)+'\')',isCustom?'delHeading(\''+escAttr(h)+'\')':null);}).join('');
+    if(!cards.trim())cards='<div class="empty"><i class="ti ti-folder-off"></i><p>'+(q?'Nothing matches.':'No '+SECTION_META[view].hLabel+'s yet.')+'</p>'+(q?'':'<button class="btn primary" onclick="openName(\'heading\')"><i class="ti ti-plus"></i>New '+SECTION_META[view].hLabel+'</button>')+'</div>';
+    list.innerHTML='<div class="grid">'+cards+'</div>';
+  }else if(level==='heading'){
+    const fs=foldersIn(view,curHeading);
+    let cards=fs.map(f=>{if(q&&!f.name.toLowerCase().includes(q))return'';const ic=itemsIn(f.id).length;return tile('folder','folder',f.name,ic+' item'+(ic!==1?'s':''),'openFolder(\''+f.id+'\')','delFolder(\''+f.id+'\')');}).join('');
+    if(!cards.trim())cards='<div class="empty"><i class="ti ti-folder-off"></i><p>'+(q?'Nothing matches.':'No folders in here yet.')+'</p>'+(q?'':'<button class="btn primary" onclick="openName(\'folder\')"><i class="ti ti-plus"></i>New folder</button>')+'</div>';
+    list.innerHTML='<div class="grid">'+cards+'</div>';
+  }else if(level==='folder'){
+    const its=itemsIn(curFolder.id);
+    let cards=its.map(it=>{if(q&&!(it.title.toLowerCase().includes(q)||(it.body||'').toLowerCase().includes(q)))return'';if(it.type==='pdf')return tile('pdf','file-type-pdf',it.title,'PDF document','openItem2(\''+it.id+'\')','delItem(\''+it.id+'\')');return '<div class="tile card-note" onclick="openItem2(\''+it.id+'\')"><button class="tdel" onclick="event.stopPropagation();delItem(\''+it.id+'\')"><i class="ti ti-trash"></i></button><div class="tile-ic ic-note"><i class="ti ti-note"></i></div><h4>'+esc(it.title)+'</h4><p>'+esc(it.body)+'</p></div>';}).join('');
+    if(!cards.trim())cards='<div class="empty"><i class="ti ti-files-off"></i><p>'+(q?'Nothing matches.':'Empty folder. Add a note or upload a PDF.')+'</p>'+(q?'':'<button class="btn primary" onclick="openItem()"><i class="ti ti-plus"></i>Add item</button>')+'</div>';
+    list.innerHTML='<div class="grid">'+cards+'</div>';
   }
-  const upcoming=[...events].filter(e=>e.date>=todayStr).sort((a,b)=>a.date.localeCompare(b.date)).slice(0,30);
-  let evHtml='';
-  if(!upcoming.length)evHtml='<div style="font-size:13px;color:var(--text3);font-weight:500;padding:8px 2px">No upcoming dates. Add one to get started.</div>';
-  else upcoming.forEach(e=>{
-    const dt=new Date(e.date);
-    evHtml+='<div class="ev-list-item"><div class="ev-date">'+dt.toLocaleDateString('en-GB',{day:'numeric'})+'<br>'+dt.toLocaleDateString('en-GB',{month:'short'})+'</div><div class="ev-info"><h5>'+esc(e.title)+'</h5>'+(e.notes?'<p>'+esc(e.notes)+'</p>':'')+'</div><button class="ev-del" onclick="delEvent(\''+e.id+'\')"><i class="ti ti-x"></i></button></div>';
-  });
-  list.innerHTML='<div id="cal-wrap"><div class="cal-card"><div class="cal-head"><h3>'+monthName+'</h3><div class="cal-nav"><button onclick="calNav(-1)"><i class="ti ti-chevron-left"></i></button><button onclick="calToday()" title="Today"><i class="ti ti-point"></i></button><button onclick="calNav(1)"><i class="ti ti-chevron-right"></i></button></div></div><div class="cal-grid">'+cells+'</div></div><div class="cal-card"><h3 style="font-size:16px;font-weight:800;margin-bottom:14px">Upcoming dates</h3>'+evHtml+'</div></div>';
 }
+function tile(iconClass,icon,title,sub,onclick,delFn){return '<div class="tile" onclick="'+onclick+'">'+(delFn?'<button class="tdel" onclick="event.stopPropagation();'+delFn+'"><i class="ti ti-trash"></i></button>':'')+'<div class="tile-ic ic-'+iconClass+'"><i class="ti ti-'+icon+'"></i></div><h4>'+esc(title)+'</h4><div class="tsub">'+sub+'</div></div>';}
+function openHeading(h){curHeading=h;curFolder=null;curItem=null;level='heading';document.getElementById('search').value='';render();}
+function openFolder(id){const f=folders.find(x=>x.id===id);if(!f)return;curFolder=f;curHeading=f.heading;curItem=null;level='folder';document.getElementById('search').value='';render();}
+function openItem2(id){const it=items.find(x=>x.id===id);if(!it)return;curItem=it;level='item';render();}
+function renderItem(){const it=curItem;const d=document.getElementById('detail');let body;if(it.type==='pdf')body='<iframe class="pdf-frame" src="'+it.file_url+'"></iframe>';else body='<div class="detail-body">'+esc(it.body)+'</div>';d.innerHTML='<div class="detail-actions"><button class="btn" onclick="openFolder(\''+it.folder_id+'\')"><i class="ti ti-arrow-left"></i>Back</button>'+(it.type==='note'?'<button class="btn" onclick="editItem(\''+it.id+'\')"><i class="ti ti-edit"></i>Edit</button>':'<button class="btn" onclick="window.open(\''+it.file_url+'\',\'_blank\')"><i class="ti ti-external-link"></i>Open</button>')+'<button class="btn" style="color:var(--red);border-color:#f5c2c2" onclick="delItem(\''+it.id+'\',true)"><i class="ti ti-trash"></i>Delete</button></div><div class="detail-h">'+esc(it.title)+'</div><div class="detail-meta"><span>'+(it.type==='pdf'?'PDF document':'Note')+'</span><span>&middot;</span><span>Updated '+new Date(it.updated_at).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'})+'</span></div>'+body;}
+function openName(mode){nameMode=mode;document.getElementById('n-title').textContent='New '+(mode==='heading'?SECTION_META[view].hLabel:'folder');document.getElementById('n-label').textContent=(mode==='heading'?SECTION_META[view].hLabel:'folder')+' name';document.getElementById('n-input').value='';openOv('ov-name');setTimeout(()=>document.getElementById('n-input').focus(),50);}
+async function saveName(){const name=document.getElementById('n-input').value.trim();if(!name)return;const b=document.getElementById('n-save');b.disabled=true;try{if(nameMode==='heading'){const c=await sb('headings',{method:'POST',body:JSON.stringify({section:view,name})});if(c&&c[0])headings.push(c[0]);}else{const c=await sb('folders',{method:'POST',body:JSON.stringify({section:view,heading:curHeading,name})});if(c&&c[0])folders.push(c[0]);}updateCounts();closeOv('ov-name');render();}catch(e){alert('Failed to add.')}b.disabled=false;}
+async function delHeading(h){if(!confirm('Delete "'+h+'" and everything inside it?'))return;const fs=foldersIn(view,h);for(const f of fs)await reallyDeleteFolder(f.id,false);const rec=headings.find(x=>x.section===view&&x.name===h);if(rec){try{await sb('headings?id=eq.'+rec.id,{method:'DELETE'});headings=headings.filter(x=>x.id!==rec.id);}catch(e){}}updateCounts();render();}
+async function delFolder(id){if(!confirm('Delete this folder and everything in it?'))return;await reallyDeleteFolder(id,true);}
+async function reallyDeleteFolder(id,rerender){const its=itemsIn(id);for(const it of its){if(it.type==='pdf')await deletePdf(it.file_path);}try{await sb('folders?id=eq.'+id,{method:'DELETE'});}catch(e){}items=items.filter(i=>i.folder_id!==id);folders=folders.filter(f=>f.id!==id);if(rerender){updateCounts();render();}}
+function openItem(){editItemId=null;itemType='note';pendingPdf=null;document.getElementById('i-title').textContent='New item';document.getElementById('i-seg').style.display='flex';setItemType('note');document.getElementById('i-name').value='';document.getElementById('i-body').value='';document.getElementById('gen-stat').textContent='';document.getElementById('drop').classList.remove('has');document.getElementById('drop-txt').textContent='Click to choose a PDF from your laptop';openOv('ov-item');setTimeout(()=>document.getElementById('i-name').focus(),50);}
+function editItem(id){const it=items.find(x=>x.id===id);if(!it)return;editItemId=id;itemType='note';pendingPdf=null;document.getElementById('i-title').textContent='Edit note';document.getElementById('i-seg').style.display='none';setItemType('note');document.getElementById('i-name').value=it.title;document.getElementById('i-body').value=it.body;document.getElementById('gen-stat').textContent='';openOv('ov-item');}
+function setItemType(t){itemType=t;document.getElementById('seg-note').classList.toggle('on',t==='note');document.getElementById('seg-pdf').classList.toggle('on',t==='pdf');document.getElementById('note-fields').style.display=t==='note'?'block':'none';document.getElementById('pdf-fields').style.display=t==='pdf'?'block':'none';}
+function pdfChosen(e){const f=e.target.files[0];if(!f)return;pendingPdf=f;document.getElementById('drop').classList.add('has');document.getElementById('drop-txt').textContent=f.name;if(!document.getElementById('i-name').value)document.getElementById('i-name').value=f.name.replace(/\.pdf$/i,'');}
+async function saveItem(){const title=document.getElementById('i-name').value.trim();if(!title){alert('Add a title.');return;}const b=document.getElementById('i-save');b.disabled=true;b.textContent='Saving...';try{if(editItemId){const u=await sb('items?id=eq.'+editItemId,{method:'PATCH',body:JSON.stringify({title,body:document.getElementById('i-body').value.trim(),updated_at:new Date().toISOString()})});const i=items.findIndex(x=>x.id===editItemId);if(i>-1&&u&&u[0])items[i]=u[0];}else if(itemType==='note'){const c=await sb('items',{method:'POST',body:JSON.stringify({folder_id:curFolder.id,type:'note',title,body:document.getElementById('i-body').value.trim()})});if(c&&c[0])items.unshift(c[0]);}else{if(!pendingPdf){alert('Choose a PDF file first.');b.disabled=false;b.textContent='Save';return;}b.textContent='Uploading...';const up=await uploadPdf(pendingPdf);const c=await sb('items',{method:'POST',body:JSON.stringify({folder_id:curFolder.id,type:'pdf',title,file_path:up.path,file_url:up.url})});if(c&&c[0])items.unshift(c[0]);}closeOv('ov-item');render();if(editItemId&&curItem){curItem=items.find(x=>x.id===editItemId);renderItem();}}catch(e){alert('Failed to save: '+e.message);}b.disabled=false;b.textContent='Save';}
+async function delItem(id,back){if(!confirm('Delete this item?'))return;const it=items.find(x=>x.id===id);try{if(it&&it.type==='pdf')await deletePdf(it.file_path);await sb('items?id=eq.'+id,{method:'DELETE'});items=items.filter(x=>x.id!==id);if(back){level='folder';curItem=null;}render();}catch(e){alert('Failed to delete.')}}
+async function genItem(){const title=document.getElementById('i-name').value.trim();if(!title){alert('Enter a title first.');return;}const btn=document.getElementById('gen-btn');btn.disabled=true;document.getElementById('gen-stat').innerHTML='<div class="gen-stat">Writing...</div>';try{const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1000,messages:[{role:'user',content:'You are an experienced UK accountant writing an internal knowledge base note. Section: '+view+'. Heading: '+curHeading+'. Folder: '+(curFolder?curFolder.name:'')+'. Topic: '+title+'. Write clear, practical, step-by-step content with key reminders and common mistakes. Concise, no preamble, no title.'}]})});const d=await r.json();document.getElementById('i-body').value=d.content?.find(b=>b.type==='text')?.text||'';document.getElementById('gen-stat').innerHTML='';}catch(e){document.getElementById('gen-stat').innerHTML='<div class="gen-stat" style="color:var(--red)">Failed. Try again.</div>';}btn.disabled=false;}
+function renderCalendar(){const list=document.getElementById('list');const first=new Date(calYear,calMonth,1);const startDow=(first.getDay()+6)%7;const dim=new Date(calYear,calMonth+1,0).getDate();const mn=first.toLocaleDateString('en-GB',{month:'long',year:'numeric'});const today=new Date().toISOString().slice(0,10);let cells='';['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].forEach(d=>cells+='<div class="cal-dow">'+d+'</div>');for(let i=0;i<startDow;i++)cells+='<div class="cal-day other"></div>';for(let d=1;d<=dim;d++){const ds=calYear+'-'+String(calMonth+1).padStart(2,'0')+'-'+String(d).padStart(2,'0');const de=events.filter(e=>e.date===ds);let cls='cal-day';if(ds===today)cls+=' today';cells+='<div class="'+cls+'" title="'+de.map(e=>esc(e.title)).join(', ')+'">'+d+(de.length?'<span class="ev-dot"></span>':'')+'</div>';}const up=[...events].filter(e=>e.date>=today).sort((a,b)=>a.date.localeCompare(b.date)).slice(0,30);let ev=up.length?up.map(e=>{const dt=new Date(e.date);return'<div class="ev-list-item"><div class="ev-date">'+dt.toLocaleDateString('en-GB',{day:'numeric'})+'<br>'+dt.toLocaleDateString('en-GB',{month:'short'})+'</div><div class="ev-info"><h5>'+esc(e.title)+'</h5>'+(e.notes?'<p>'+esc(e.notes)+'</p>':'')+'</div><button class="ev-del" onclick="delEvent(\''+e.id+'\')"><i class="ti ti-x"></i></button></div>';}).join(''):'<div style="font-size:13px;color:var(--text3);font-weight:500;padding:8px 2px">No upcoming dates.</div>';list.innerHTML='<div id="cal-wrap"><div class="cal-card"><div class="cal-head"><h3>'+mn+'</h3><div class="cal-nav"><button onclick="calNav(-1)"><i class="ti ti-chevron-left"></i></button><button onclick="calToday()"><i class="ti ti-point"></i></button><button onclick="calNav(1)"><i class="ti ti-chevron-right"></i></button></div></div><div class="cal-grid">'+cells+'</div></div><div class="cal-card"><h3 style="font-size:16px;font-weight:800;margin-bottom:14px">Upcoming dates</h3>'+ev+'</div></div>';}
 function calNav(d){calMonth+=d;if(calMonth<0){calMonth=11;calYear--}if(calMonth>11){calMonth=0;calYear++}renderCalendar();}
 function calToday(){calMonth=new Date().getMonth();calYear=new Date().getFullYear();renderCalendar();}
-function openEventModal(){document.getElementById('e-title').value='';document.getElementById('e-date').value='';document.getElementById('e-notes').value='';document.getElementById('ov3').style.display='flex';setTimeout(()=>document.getElementById('e-title').focus(),50);}
-function closeEventModal(){document.getElementById('ov3').style.display='none';}
-async function saveEvent(){const title=document.getElementById('e-title').value.trim();const date=document.getElementById('e-date').value;const notes=document.getElementById('e-notes').value.trim();if(!title||!date){alert('Add a title and date.');return;}try{const c=await sb('events',{method:'POST',body:JSON.stringify({title,date,notes})});if(c&&c[0])events.push(c[0]);updateCounts();closeEventModal();renderCalendar();}catch(e){alert('Failed to add.')}}
+async function saveEvent(){const title=document.getElementById('e-title').value.trim();const date=document.getElementById('e-date').value;const notes=document.getElementById('e-notes').value.trim();if(!title||!date){alert('Add a title and date.');return;}try{const c=await sb('events',{method:'POST',body:JSON.stringify({title,date,notes})});if(c&&c[0])events.push(c[0]);updateCounts();closeOv('ov-event');document.getElementById('e-title').value='';document.getElementById('e-date').value='';document.getElementById('e-notes').value='';renderCalendar();}catch(e){alert('Failed.')}}
 async function delEvent(id){if(!confirm('Delete this date?'))return;try{await sb('events?id=eq.'+id,{method:'DELETE'});events=events.filter(e=>e.id!==id);updateCounts();renderCalendar();}catch(e){alert('Failed.')}}
-
-/* Jobs */
-function renderJobs(){
-  const list=document.getElementById('list');
-  const todayStr=new Date().toISOString().slice(0,10);
-  let html='<div class="jobs-board">';
-  JOB_COLS.forEach(col=>{
-    const colJobs=jobs.filter(j=>j.status===col.name);
-    html+='<div class="job-col"><div class="job-col-head"><span class="jc-dot" style="background:'+col.color+'"></span>'+col.name+'<span class="jc-count">'+colJobs.length+'</span></div>';
-    colJobs.forEach(j=>{
-      let dueCls='jd';let dueTxt='';
-      if(j.due_date){
-        if(j.due_date<todayStr&&j.status!=='Done')dueCls+=' over';
-        else{const diff=(new Date(j.due_date)-new Date(todayStr))/86400000;if(diff<=7&&j.status!=='Done')dueCls+=' soon';}
-        dueTxt='<div class="'+dueCls+'"><i class="ti ti-clock"></i>'+new Date(j.due_date).toLocaleDateString('en-GB',{day:'numeric',month:'short'})+'</div>';
-      }
-      html+='<div class="job-card" onclick="openJobModal(\''+j.id+'\')"><h5>'+esc(j.client)+'</h5>'+(j.job_type?'<div class="jt">'+esc(j.job_type)+'</div>':'')+dueTxt+'</div>';
-    });
-    html+='</div>';
-  });
-  html+='</div>';
-  list.innerHTML=html;
-}
-function openJobModal(id){
-  editJobId=id||null;const j=id?jobs.find(x=>x.id===id):null;
-  document.getElementById('j-mtitle').textContent=j?'Edit job':'New job';
-  document.getElementById('j-client').value=j?j.client:'';
-  document.getElementById('j-type').value=j?j.job_type:'';
-  document.getElementById('j-status').value=j?j.status:'To do';
-  document.getElementById('j-due').value=j?(j.due_date||''):'';
-  document.getElementById('j-notes').value=j?j.notes:'';
-  document.getElementById('j-del').style.display=j?'inline-flex':'none';
-  document.getElementById('ov4').style.display='flex';
-  setTimeout(()=>document.getElementById('j-client').focus(),50);
-}
-function closeJobModal(){document.getElementById('ov4').style.display='none';editJobId=null;}
-async function saveJob(){
-  const client=document.getElementById('j-client').value.trim();
-  if(!client){alert('Add a client name.');return;}
-  const data={client,job_type:document.getElementById('j-type').value.trim(),status:document.getElementById('j-status').value,due_date:document.getElementById('j-due').value||null,notes:document.getElementById('j-notes').value.trim(),updated_at:new Date().toISOString()};
-  try{
-    if(editJobId){const u=await sb('jobs?id=eq.'+editJobId,{method:'PATCH',body:JSON.stringify(data)});const i=jobs.findIndex(j=>j.id===editJobId);if(i>-1&&u&&u[0])jobs[i]=u[0];}
-    else{const c=await sb('jobs',{method:'POST',body:JSON.stringify(data)});if(c&&c[0])jobs.unshift(c[0]);}
-    updateCounts();closeJobModal();renderJobs();
-  }catch(e){alert('Failed to save.')}
-}
-async function delJob(){if(!editJobId||!confirm('Delete this job?'))return;try{await sb('jobs?id=eq.'+editJobId,{method:'DELETE'});jobs=jobs.filter(j=>j.id!==editJobId);updateCounts();closeJobModal();renderJobs();}catch(e){alert('Failed.')}}
-
-/* AI */
-async function aiSend(){
-  const inp=document.getElementById('ai-in');const q=inp.value.trim();if(!q)return;inp.value='';
-  addM('user',q);const load=addM('ai','Thinking…',true);
-  const words=q.toLowerCase().split(' ').filter(w=>w.length>3);
-  const rel=entries.filter(e=>words.some(w=>e.title.toLowerCase().includes(w)||e.body.toLowerCase().includes(w))).slice(0,6);
-  const ctx=rel.length?'\n\nThe user\'s own saved notes that may be relevant:\n'+rel.map(e=>`[${e.section}/${e.heading}] ${e.title}:\n${e.body}`).join('\n\n'):'';
-  try{
-    const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1000,messages:[{role:'user',content:`You are a helpful UK accounting assistant for Kian, an accountant. Answer clearly and practically. Reference his own notes when relevant. Keep it concise.${ctx}\n\nQuestion: ${q}`}]})});
-    const d=await r.json();load.textContent=d.content?.find(b=>b.type==='text')?.text||'No response.';load.classList.remove('loading');
-  }catch(e){load.textContent='Error — check your connection.';load.classList.remove('loading');}
-}
+function renderJobs(){const list=document.getElementById('list');const today=new Date().toISOString().slice(0,10);let html='<div class="jobs-board">';JOB_COLS.forEach(col=>{const cj=jobs.filter(j=>j.status===col.name);html+='<div class="job-col"><div class="job-col-head"><span class="jc-dot" style="background:'+col.color+'"></span>'+col.name+'<span class="jc-count">'+cj.length+'</span></div>';cj.forEach(j=>{let dc='jd',dt='';if(j.due_date){if(j.due_date<today&&j.status!=='Done')dc+=' over';else{const diff=(new Date(j.due_date)-new Date(today))/86400000;if(diff<=7&&j.status!=='Done')dc+=' soon';}dt='<div class="'+dc+'"><i class="ti ti-clock"></i>'+new Date(j.due_date).toLocaleDateString('en-GB',{day:'numeric',month:'short'})+'</div>';}html+='<div class="job-card" onclick="openJobModal(\''+j.id+'\')"><h5>'+esc(j.client)+'</h5>'+(j.job_type?'<div class="jt">'+esc(j.job_type)+'</div>':'')+dt+'</div>';});html+='</div>';});html+='</div>';list.innerHTML=html;}
+function openJobModal(id){editJobId=id||null;const j=id?jobs.find(x=>x.id===id):null;document.getElementById('j-mtitle').textContent=j?'Edit job':'New job';document.getElementById('j-client').value=j?j.client:'';document.getElementById('j-type').value=j?j.job_type:'';document.getElementById('j-status').value=j?j.status:'To do';document.getElementById('j-due').value=j?(j.due_date||''):'';document.getElementById('j-notes').value=j?j.notes:'';document.getElementById('j-del').style.display=j?'inline-flex':'none';openOv('ov-job');setTimeout(()=>document.getElementById('j-client').focus(),50);}
+async function saveJob(){const client=document.getElementById('j-client').value.trim();if(!client){alert('Add a client name.');return;}const data={client,job_type:document.getElementById('j-type').value.trim(),status:document.getElementById('j-status').value,due_date:document.getElementById('j-due').value||null,notes:document.getElementById('j-notes').value.trim(),updated_at:new Date().toISOString()};try{if(editJobId){const u=await sb('jobs?id=eq.'+editJobId,{method:'PATCH',body:JSON.stringify(data)});const i=jobs.findIndex(j=>j.id===editJobId);if(i>-1&&u&&u[0])jobs[i]=u[0];}else{const c=await sb('jobs',{method:'POST',body:JSON.stringify(data)});if(c&&c[0])jobs.unshift(c[0]);}updateCounts();closeOv('ov-job');renderJobs();}catch(e){alert('Failed.')}}
+async function delJob(){if(!editJobId||!confirm('Delete this job?'))return;try{await sb('jobs?id=eq.'+editJobId,{method:'DELETE'});jobs=jobs.filter(j=>j.id!==editJobId);updateCounts();closeOv('ov-job');renderJobs();}catch(e){alert('Failed.')}}
+async function aiSend(){const inp=document.getElementById('ai-in');const q=inp.value.trim();if(!q)return;inp.value='';addM('user',q);const load=addM('ai','Thinking...',true);const words=q.toLowerCase().split(' ').filter(w=>w.length>3);const rel=items.filter(it=>it.type==='note'&&words.some(w=>it.title.toLowerCase().includes(w)||(it.body||'').toLowerCase().includes(w))).slice(0,6);const ctx=rel.length?'\n\nThe user own saved notes that may be relevant:\n'+rel.map(it=>it.title+':\n'+it.body).join('\n\n'):'';try{const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1000,messages:[{role:'user',content:'You are a helpful UK accounting assistant for Kian, an accountant. Answer clearly and practically. Reference his own notes when relevant. Keep it concise.'+ctx+'\n\nQuestion: '+q}]})});const d=await r.json();load.textContent=d.content?.find(b=>b.type==='text')?.text||'No response.';load.classList.remove('loading');}catch(e){load.textContent='Error - check your connection.';load.classList.remove('loading');}}
 function addM(role,text,loading){const el=document.createElement('div');el.className='m '+role+(loading?' loading':'');el.textContent=text;const m=document.getElementById('ai-msgs');m.appendChild(el);m.scrollTop=m.scrollHeight;return el;}
 function aiKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();aiSend();}}
-
+function openOv(id){document.getElementById(id).classList.add('open');}
+function closeOv(id){document.getElementById(id).classList.remove('open');}
 function esc(s){return(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function escAttr(s){return(s||'').replace(/'/g,"\\'").replace(/"/g,'&quot;');}
-function timeAgo(ts){const diff=Date.now()-new Date(ts).getTime();if(diff<60000)return'Just now';if(diff<3600000)return Math.floor(diff/60000)+'m ago';if(diff<86400000)return Math.floor(diff/3600000)+'h ago';if(diff<604800000)return Math.floor(diff/86400000)+'d ago';return new Date(ts).toLocaleDateString('en-GB',{day:'numeric',month:'short'});}
-
-document.getElementById('ov').addEventListener('click',function(e){if(e.target===this)closeOv();});
-['ov2','ov3','ov4'].forEach(id=>document.getElementById(id).addEventListener('click',function(e){if(e.target===this)this.style.display='none';}));
+document.querySelectorAll('.ov').forEach(o=>o.addEventListener('click',function(e){if(e.target===this)this.classList.remove('open');}));
 loadAll();
 </script>
 </body>
